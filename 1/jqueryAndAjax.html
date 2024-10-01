@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery AJAX Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="loadDataBtn">Load Data</button>
+    <div id="data"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#loadDataBtn').click(function() {
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/posts/1',
+                    type: 'GET',
+                    success: function(response) {
+                        $('#data').html('<h3>' + response.title + '</h3><p>' + response.body + '</p>');
+                    },
+                    error: function() {
+                        $('#data').html('<p>Error loading data.</p>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
